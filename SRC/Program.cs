@@ -30,6 +30,7 @@ namespace SRC
             {
                 Console.WriteLine(ex.ToString());
             }
+            SaveFale();
 
         }
         static private void FillStudent()
@@ -42,12 +43,20 @@ namespace SRC
                 Console.WriteLine($"Введите имя : ", i);
                 stud[i].Name = Console.ReadLine();
                 Console.WriteLine($"Введите группу : ", i);
-                stud[i].Gruppa = Console.ReadLine(); 
+                stud[i].Gruppa = Console.ReadLine();
             }
 
         }
-       
+        static public void SaveFale()
+        {
+            using (StreamWriter writer = new StreamWriter("File.txt"))
+            {
+                foreach (var s in stud)
+                {
+                    writer.WriteLine("Группа:" + s.Gruppa + " " + "Фамилия:" +  s.Familija + " " + "Имя:" + s.Name);
+                }
             }
         }
 
-            
+    }
+}
